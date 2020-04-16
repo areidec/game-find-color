@@ -26,7 +26,7 @@ const colors = [
 const ShuffleArray = (colors) => {
 	function random(array) {
 		const randomIndex = Math.floor(Math.random() * colors.length);
-		if(array.findIndex(num => num == randomIndex) !== -1) {
+		if (array.findIndex(num => num === randomIndex) !== -1) {
 			return random(array);
 		} else {
 			return randomIndex;
@@ -59,7 +59,7 @@ const Board = () => {
 	}, [passedTiles])
 
 	useEffect(() => {
-		if (openedTiles.length == 2) {
+		if (openedTiles.length === 2) {
 			const [tile1, tile2] = openedTiles;
 			if (tile1.color === tile2.color) {
 				updatePasedTiles([...passedTiles, tile1, tile2]);
