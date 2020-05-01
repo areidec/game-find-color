@@ -5,7 +5,7 @@ import Board from '../board';
 
 const App = () => (
   <div className="container">
-    <h1>Find your's shell</h1>
+    <h1>Find your&apos;s shell</h1>
 
     <Board />
   </div>

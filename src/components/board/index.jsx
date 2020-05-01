@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import React, { useState, useEffect } from 'react';
 import './board.css';
 
@@ -105,6 +106,7 @@ const Board = () => {
         }, 1000);
       }
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [openedTiles]);
 
   const onClickTile = (id) => {
@@ -115,6 +117,7 @@ const Board = () => {
       let newTile = {};
       const newTiles = tiles.map((tile, idx) => {
         if (tile.id === id) {
+          // eslint-disable-next-line no-param-reassign
           tile.opened = true;
 
           newTile = { ...tile, idx };
@@ -138,6 +141,7 @@ const Board = () => {
         const newColors = ShuffleArray(colors);
         newColors.map((item) => {
           item.opened = false;
+          return item;
         });
 
         return newColors;
@@ -149,18 +153,18 @@ const Board = () => {
     <div>
       <ul className="board">
         {
-						tiles.sort((a, b) => b.position - a.position).map((tile) => {
-						  const { color, opened } = tile;
-						  return (
-  <Shell
-    color={color}
-    opened={opened}
-    key={tile.id}
-    clickShuffle={() => onClickTile(tile.id)}
-  />
-						  );
-						})
-					}
+          tiles.sort((a, b) => b.position - a.position).map((tile) => {
+            const { color, opened } = tile;
+            return (
+              <Shell
+                color={color}
+                opened={opened}
+                key={tile.id}
+                clickShuffle={() => onClickTile(tile.id)}
+              />
+            );
+          })
+        }
       </ul>
       <ModalWindow opened={modal} restart={onRestart} />
     </div>

@@ -1,4 +1,7 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './shell.css';
 import { ShellSvg } from '../icons';
@@ -23,6 +26,12 @@ const Shell = ({ color, opened, clickShuffle }) => {
       <div className="shell-color" style={stylesCoin} />
     </li>
   );
+};
+
+Shell.propTypes = {
+  color: PropTypes.string.isRequired,
+  opened: PropTypes.bool.isRequired,
+  clickShuffle: PropTypes.func.isRequired,
 };
 
 export default Shell;
